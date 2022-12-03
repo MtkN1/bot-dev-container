@@ -1,0 +1,42 @@
+{
+    "name": "Bot Dev Container",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "bot",
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+    "features": {},
+    "postCreateCommand": "poetry install --no-root",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "editor.rulers": [
+                    88
+                ],
+                "[python]": {
+                    "editor.formatOnSave": true,
+                    "editor.codeActionsOnSave": {
+                        "source.organizeImports": true
+                    }
+                },
+                "python.defaultInterpreterPath": ".venv/bin/python",
+                "python.linting.pylintEnabled": false,
+                "python.linting.flake8Enabled": true,
+                "python.formatting.provider": "black",
+                "isort.args": [
+                    "--profile",
+                    "black"
+                ],
+                "python.linting.flake8Args": [
+                    "--max-line-length",
+                    "88",
+                    "--extend-ignore",
+                    "E203"
+                ]
+            },
+            "extensions": [
+                "mongodb.mongodb-vscode",
+                "be5invis.toml",
+                "eamodio.gitlens"
+            ]
+        }
+    }
+}

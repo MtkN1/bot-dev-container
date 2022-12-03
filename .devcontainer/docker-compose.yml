@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    volumes:
+      - ../..:/workspaces:cached
+
+    command: sleep infinity
+
+    network_mode: service:db
+
+  db:
+    image: mongo:latest
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
